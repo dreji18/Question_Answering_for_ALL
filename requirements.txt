@@ -9,3 +9,5 @@ rank-bm25==0.2.1
 youtube-search-python==1.4.2
 tweepy	
 pandas
+functools==0.5
+
