@@ -105,6 +105,7 @@ def extract_images(pages, keyword_list):
         image_names_list.append(image_names)
     
     image_names_list = reduce(operator.concat, image_names_list)
+    st.write("images found--------1")
            
     final_images = []
     for i in keyword_list:
