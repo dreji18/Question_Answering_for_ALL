@@ -1,5 +1,5 @@
 streamlit==0.78.0
-docx==0.8.10
+python-docx==0.8.10
 wikipedia==1.4.0
 nltk
 torch
