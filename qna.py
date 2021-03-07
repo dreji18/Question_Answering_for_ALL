@@ -6,8 +6,7 @@ Created on Mon Feb  8 18:04:27 2021
 """
 
 # loading the packages
-import sys
-import docx
+#import docx
 import os
 import urllib.request
 import streamlit as st
