@@ -4,7 +4,7 @@ wikipedia==1.4.0
 nltk
 torch
 transformers
-rank-bm25
+rank-bm25==0.2.1
 youtubesearchpython
 tweepy	
 pandas
