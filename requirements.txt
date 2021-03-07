@@ -1,0 +1,12 @@
+streamlit
+docx
+numpy
+re
+wikipedia
+nltk
+torch
+transformers
+rank_bm25
+youtubesearchpython
+tweepy	
+pandas
