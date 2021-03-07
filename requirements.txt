@@ -10,7 +10,6 @@ youtube-search-python==1.4.2
 tweepy	
 pandas
 functools==0.5
-operator
 urllib
 random
 
