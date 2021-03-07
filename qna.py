@@ -325,8 +325,8 @@ def main():
                         i, width=None, # Manually Adjust the width of the image as per requirement,
                         use_column_width=True, caption=i
 
-    except:
-        st.write("Sorry! Images unable to load")
+     except:
+         st.write("Sorry! Images unable to load")
                 
     st.info("All the data displayed in this app are from Wikipedia, Twitter and Youtube. This article uses material from the Wikipedia article Metasyntactic variable, which is released under the Creative Commons Attribution-ShareAlike 3.0 Unported License")
                    
