@@ -234,7 +234,7 @@ def main():
     wallpaper = wallpaper.resize((700,350))
     st.image(wallpaper)
     
-    search_string = st.sidebar.text_input("type your question here", "")
+    search_string = st.sidebar.text_input("type your question here and press enter", "")
 
     #if st.button("Extract"):# creates a button named "Extract"
     try:
@@ -250,18 +250,7 @@ def main():
             st.info("Sorry, No Wikipedia Results")
     except:
         st.write("Sorry! Can't extract any information")
-    
-    try:
-        tweets_box = st.sidebar.checkbox("Click here to see some tweets")
-        if tweets_box:
-            tweet_data = tweets_extraction(keyword_list)
-            if tweet_data != []:
-                st.subheader("🎲 Tweets")
-                for tweet in tweet_data:
-                     st.markdown(tweet)
-    except:
-        print("")
-    
+        
     try:
         answers_list = []
         datastore = document_ranking(information, search_string, 3)
@@ -287,16 +276,24 @@ def main():
     except:
         print("")
     
+    try:
+        tweets_box = st.sidebar.checkbox("Click here to see some tweets")
+        if tweets_box:
+            tweet_data = tweets_extraction(keyword_list)
+            if tweet_data != []:
+                st.subheader("🎲 Tweets")
+                for tweet in tweet_data:
+                     st.markdown(tweet)
+    except:
+        print("")
+    
     if answers_list != []:
         st.subheader("🎲 Answers")
         answers = '\n\n'.join(answers_list)
         if answers != '':
             st.success(answers)
     
-    if original_data != []:
-        download_contents = st.sidebar.checkbox("Download the Contents") 
-        if download_contents:      
-            content = content_creation(images, keyword_list, original_data, query)
+
     
     if datastore != []:        
         st.subheader("🎲 Context")
@@ -335,6 +332,11 @@ def main():
                         num = 0
     except:
         st.write("Sorry! Images unable to load")
+    
+    if original_data != []:
+        download_contents = st.sidebar.checkbox("Download the Contents") 
+        if download_contents:      
+            content = content_creation(images, keyword_list, original_data, query)
                 
     st.info("All the data displayed in this app are from Wikipedia, Twitter and Youtube. This article uses material from the Wikipedia article Metasyntactic variable, which is released under the Creative Commons Attribution-ShareAlike 3.0 Unported License")
                    
