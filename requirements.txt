@@ -1,7 +1,5 @@
 streamlit
-python-docx==0.8.10
-numpy
-re
+python-docx
 wikipedia
 nltk
 torch
