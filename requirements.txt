@@ -2,7 +2,7 @@ streamlit==0.78.0
 python-docx==0.8.10
 wikipedia==1.4.0
 nltk
-torch
+torch==1.8.0
 transformers
 rank-bm25==0.2.1
 youtube-search-python==1.4.2
