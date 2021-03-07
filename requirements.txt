@@ -1,5 +1,5 @@
 streamlit
-wikipedia
+wikipedia==1.4.0
 nltk
 torch
 transformers
