@@ -1,9 +1,10 @@
 streamlit
+docx
 wikipedia==1.4.0
 nltk
 torch
 transformers
-rank_bm25
+rank-bm25
 youtubesearchpython
 tweepy	
 pandas
