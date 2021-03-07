@@ -5,6 +5,6 @@ nltk
 torch
 transformers
 rank-bm25==0.2.1
-youtubesearchpython
+youtube-search-python==1.4.2
 tweepy	
 pandas
