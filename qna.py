@@ -323,7 +323,7 @@ def main():
                 else:
                     st.image(
                         i, width=None, # Manually Adjust the width of the image as per requirement,
-                        use_column_width=True, caption=i
+                        use_column_width=True, caption=i)
 
     except:
         st.write("Sorry! Images unable to load")
