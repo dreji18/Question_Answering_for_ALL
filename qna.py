@@ -104,9 +104,7 @@ def extract_images(pages, keyword_list):
         image_names = page.images
         image_names_list.append(image_names)
     
-    st.write("images found--------0")
     image_names_list = reduce(operator.concat, image_names_list)
-    st.write("images found--------1")
            
     final_images = []
     for i in keyword_list:
@@ -316,17 +314,25 @@ def main():
     try:
         if len(images)!= 0:
             st.subheader("🎲 Images")  
-            #cols = st.beta_columns(2)
-            #num = 0
+            cols = st.beta_columns(2)
+            num = 0
             for i in images:
                 if i[-4:] == ".ogg":
                     st.markdown("Ha! I found some Audio for you")
                     st.audio(i, format='audio/ogg')
                 else:
-                    st.image(
-                        i, width=None, # Manually Adjust the width of the image as per requirement,
-                        use_column_width=True, caption=i)
-
+                    if num == 0:
+                        cols[0].image(
+                            i, width=None, # Manually Adjust the width of the image as per requirement,
+                            use_column_width=True, caption=i
+                        )
+                        num = 1
+                    else:
+                        cols[1].image(
+                            i, width=None, # Manually Adjust the width of the image as per requirement,
+                            use_column_width=True, caption=i
+                        )
+                        num = 0
     except:
         st.write("Sorry! Images unable to load")
                 
