@@ -30,6 +30,7 @@ from io import BytesIO
 from pathlib import Path
 from PIL import Image
 import tweepy as tw
+import openai
 
 @st.cache
 # keyword extraction function
@@ -159,10 +160,10 @@ def extract_video(keyword_list):
 
 def tweets_extraction(search_words):
     # access permission
-    access_token ="1364594779321995265-fqUCwkOmmb6LGTi5TJy1TlXQkz3XDH"
-    access_token_secret ="Ean8ZI7ZfhaJw45V2Xvs9qsSRcCdRHiShkattS0IKlD4s"
-    consumer_key="OSG1J7nvFumVl8TxW45qiU01I"
-    consumer_secret="sNMeQmDUEyQAUp088pCUXnVAeaKiyrSjWpw6gX5PiXcaCcJxzr"
+#    access_token =" "
+#    access_token_secret =" "
+#    consumer_key=" "
+#    consumer_secret=" "
     
     auth = tw.OAuthHandler(consumer_key, consumer_secret)
     auth.set_access_token(access_token, access_token_secret)
@@ -250,7 +251,34 @@ def main():
             st.info("Sorry, No Wikipedia Results")
     except:
         st.write("Sorry! Can't extract any information")
+    
+    try:
+        #openai.api_key = "xxxxxxxxxxxxxxxxxxxxxxxxxx"
+
+        start_sequence = "\nA:"
+        restart_sequence = "\n\nQ: "
         
+        response = openai.Completion.create(
+          engine="davinci",
+          #prompt="\nQ:who is billie eilish?\nA:",
+          prompt="\nQ:"+search_string+"\nA:",
+          temperature=0,
+          max_tokens=100,
+          top_p=1,
+          frequency_penalty=0,
+          presence_penalty=0,
+          stop=["\n"]
+        )
+        
+        openai_answer = response['choices'][0]['text']
+    except:
+        openai_answer = " "
+    
+    #st.subheader("open ai answer")
+    #st.success(openai_answer)
+
+
+    
     try:
         answers_list = []
         datastore = document_ranking(information, search_string, 3)
@@ -287,14 +315,18 @@ def main():
     except:
         print("")
     
+    cols = st.beta_columns(2)
+    cols[0].subheader("🎲 Open AI Answers")
+    cols[1].subheader("🎲 DistilBERT Answers")
+    
+    # printing answers
+    cols = st.beta_columns(2)    
+    cols[0].success(openai_answer)
     if answers_list != []:
-        st.subheader("🎲 Answers")
         answers = '\n\n'.join(answers_list)
         if answers != '':
-            st.success(answers)
-    
+            cols[1].info(answers)
 
-    
     if datastore != []:        
         st.subheader("🎲 Context")
         datastore = '\n\n'.join(datastore)
